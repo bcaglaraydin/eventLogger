@@ -1,9 +1,8 @@
 import { SchemaTypes } from '@google-cloud/pubsub';
-import { pubsub } from '../static/clients.js'
+import { pubsub } from '../../static/clients.js'
 import fs from 'fs';
 
 const avscFile = './static/eventlog.avsc';
-
 
 async function createAvroSchema(schemaNameOrId) {
     const definition = fs.readFileSync(avscFile).toString();

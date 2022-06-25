@@ -1,4 +1,4 @@
-import { pubsub } from '../static/clients.js'
+import { pubsub } from '../../static/clients.js'
 
 const encodingType = 'JSON';
 

@@ -1,15 +1,17 @@
-import { createBucketWithStorageClassAndLocation } from './createBucket.js'
-import { createTopicWithSchema } from './createPubSubTopic.js'
-import { createAvroSchema } from './createSchema.js'
-import { createDataset } from './createDataset.js'
-import { createTable } from './createDatasetTable.js'
+import { createBucketWithStorageClassAndLocation } from './createDataflowHelpers/createBucket.js'
+import { createTopicWithSchema } from './createDataflowHelpers/createPubSubTopic.js'
+import { createAvroSchema } from './createDataflowHelpers/createSchema.js'
+import { createDataset } from './createDataflowHelpers/createDataset.js'
+import { createTable } from './createDataflowHelpers/createDatasetTable.js'
 import { GoogleAuth } from 'google-auth-library';
-import 'dotenv/config'
-import { projectId, bucketName, schemaNameOrId, topicNameOrId, datasetId, tableId } from '../static/config.js'
-// process.env.GOOGLE_APPLICATION_CREDENTIALS = "key.json";
+import { projectId, bucketName, schemaNameOrId, topicNameOrId, datasetId, tableId, jobNameOrId } from '../static/config.js'
+import { bigquery } from '../static/clients.js'
 
 async function createDataflow() {
-
+    const [jobs] = await bigquery.getJobs();
+    if (!jobs.includes(jobNameOrId)) {
+        return;
+    }
     await createBucketWithStorageClassAndLocation(bucketName);
     await createAvroSchema(schemaNameOrId);
     await createTopicWithSchema(schemaNameOrId, topicNameOrId);
@@ -30,7 +32,7 @@ async function createDataflow() {
             url: POST_URL,
             method: 'POST',
             data: {
-                jobName: "eventlogJob",
+                jobName: jobNameOrId,
                 environment: {
                     bypassTempDirValidation: false,
                     tempLocation: TEMP_LOCATION,

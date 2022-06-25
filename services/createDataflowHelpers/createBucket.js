@@ -1,7 +1,8 @@
 
+import { storage } from '../../static/clients.js'
+
 const storageClass = 'STANDARD';
 const location = 'US';
-import { storage } from '../static/clients.js'
 
 async function createBucketWithStorageClassAndLocation(bucketName) {
 

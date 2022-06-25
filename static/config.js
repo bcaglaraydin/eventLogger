@@ -6,6 +6,7 @@ const schemaNameOrId = process.env.SCHEMA_NAME;
 const topicNameOrId = process.env.TOPIC_NAME;
 const datasetId = process.env.DATASET_NAME;
 const tableId = process.env.TABLE_NAME;
+const jobNameOrId = process.env.JOB_NAME;
 
-export { projectId, bucketName, schemaNameOrId, topicNameOrId, datasetId, tableId }
+export { projectId, bucketName, schemaNameOrId, topicNameOrId, datasetId, tableId, jobNameOrId }
 

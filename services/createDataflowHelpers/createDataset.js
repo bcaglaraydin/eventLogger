@@ -1,4 +1,4 @@
-import { bigquery } from '../static/clients.js'
+import { bigquery } from '../../static/clients.js'
 
 async function createDataset(datasetId) {
 

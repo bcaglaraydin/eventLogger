@@ -7,7 +7,8 @@ import 'dotenv/config'
 const port = process.env.PORT || 8080;
 process.env.GOOGLE_APPLICATION_CREDENTIALS = "key.json";
 
-await createDataflow();
+
+await createDataflow(); // creates the dataflow if it doesn't exist.
 
 const app = express();
 
