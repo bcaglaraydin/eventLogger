@@ -1,0 +1,42 @@
+{
+    "type": "record",
+    "name": "Avro",
+    "fields": [
+        {
+            "name": "type",
+            "type": "string"
+        },
+        {
+            "name": "session_id",
+            "type": "string"
+        },
+        {
+            "name": "event_name",
+            "type": "string"
+        },
+        {
+            "name": "event_time",
+            "type": "int"
+        },
+        {
+            "name": "page",
+            "type": "string"
+        },
+        {
+            "name": "country",
+            "type": "string"
+        },
+        {
+            "name": "region",
+            "type": "string"
+        },
+        {
+            "name": "city",
+            "type": "string"
+        },
+        {
+            "name": "user_id",
+            "type": "string"
+        }
+    ]
+}
