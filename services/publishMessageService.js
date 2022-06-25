@@ -1,8 +1,9 @@
 import { pubsub } from '../static/clients.js'
+import { topicNameOrId } from '../static/config.js'
 
 async function publishPubSubMessage(userEvent) {
     const buffer = Buffer.from(JSON.stringify(userEvent));
-    await pubsub.topic('eventlogTopicBerdan').publish(buffer);
+    await pubsub.topic(topicNameOrId).publish(buffer);
 }
 
 export { publishPubSubMessage }
