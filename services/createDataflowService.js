@@ -5,13 +5,15 @@ import { createDataset } from './createDataflowHelpers/createDataset.js'
 import { createTable } from './createDataflowHelpers/createDatasetTable.js'
 import { GoogleAuth } from 'google-auth-library';
 import { projectId, bucketName, schemaNameOrId, topicNameOrId, datasetId, tableId, jobNameOrId } from '../static/config.js'
-import { bigquery } from '../static/clients.js'
+import { pubsub } from '../static/clients.js'
 
 async function createDataflow() {
-    const [jobs] = await bigquery.getJobs();
-    if (!jobs.includes(jobNameOrId)) {
+
+    const [topics] = await pubsub.getTopics();
+    if (topics[0].name == `projects/${projectId}/topics/${topicNameOrId}`) {
         return;
     }
+
     await createBucketWithStorageClassAndLocation(bucketName);
     await createAvroSchema(schemaNameOrId);
     await createTopicWithSchema(schemaNameOrId, topicNameOrId);

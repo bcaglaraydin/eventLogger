@@ -16,7 +16,8 @@
         },
         {
             "name": "event_time",
-            "type": "int"
+            "type": "long",
+            "logicalType": "timestamp-millis"
         },
         {
             "name": "page",
