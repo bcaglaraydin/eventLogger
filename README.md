@@ -20,6 +20,8 @@
    ```
 2. Create a new project on Google Cloud --> https://cloud.google.com/resource-manager/docs/creating-managing-projects
 
+3. Enable required API's on the project
+
 3. Create a service account with required permissions on PubSub, BigQuery, Storage and Dataflow. Create and download a JSON key for the service account, rename it as ```key.json``` and place it in ```./node``` --> https://cloud.google.com/iam/docs/service-accounts
 
 4. Create an ```.env``` file and place it in ```./node``` </br>
@@ -35,9 +37,9 @@
     ```
 2. Make sure you have docker-compose and docker installed on your machine
 
-3. Run the following command
+3. Run the following command (N is the number of servers)
    ```
-   docker-compose up
+   docker-compose up --scale api=N
    ```
 ## Endpoints
 
